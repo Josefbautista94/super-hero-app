@@ -41,7 +41,10 @@ class MainPage extends Component {
                 <h1>Superheroes</h1>
                 <ul>
                     {superheroes.map(hero => (
-                        <li key={hero.id}>{hero.name}</li>
+                        <li key={hero.id}>
+                             <img src={hero.images.md} alt={hero.name} />
+                            {hero.name} - Gender: {hero.appearance.gender} - Race: {hero.appearance.race} - Alignment: {hero.biography.alignment} 
+                        </li>
                     ))}
                 </ul>
             </div>
