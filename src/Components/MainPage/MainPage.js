@@ -125,16 +125,20 @@ class MainPage extends Component {
     if (error) return <div>Error: {error}</div>;
 
     return (
-      <div>
+      <div className = "mainContainer">
+        <div className = "titleContainer">
         <h1 className="superHeroTitle">Superheroes</h1>
+        </div>
+        <div className ="searchBarContainer">
         <input
+        className="searchBar"
           type="text"
           placeholder="Search for a superhero..."
           value={this.state.searchTerm}
           onChange={this.handleSearchChange}
-        />{" "}
+        /></div>
         <div className="filter-menu">
-          <label>Filter by Alignment: </label>
+          <label className="filterLabel" >Filter by Alignment: </label>
           <select value={filter} onChange={this.handleFilterChange}>
             <option value="all">See All</option>
             <option value="good">Good</option>
@@ -173,7 +177,7 @@ class MainPage extends Component {
               className="hero-li"
               onClick={() => this.selectHero(hero)}
             >
-              <div className="hero-name">{hero.name}</div>
+              <div className="hero-name">{hero.name}fdf</div>
               <img src={hero.images.md} alt={hero.name} />
               <div className="hero-details">
                 <div>
