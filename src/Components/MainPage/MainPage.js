@@ -3,11 +3,12 @@ import "./MainPage.css";
 import axios from "axios";
 
 class MainPage extends Component {
-  // 1. Initialize state
   state = {
     superheroes: [],
     loading: true,
     error: null,
+    filter: "all",
+    searchTerm: "",
   };
 
   // 2. Fetch data in componentDidMount
@@ -31,17 +32,55 @@ class MainPage extends Component {
       });
   }
 
+  handleFilterChange = (event) => {
+    this.setState({ filter: event.target.value });
+  };
+
+  handleSearchChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
+}
+
   render() {
-    const { superheroes, loading, error } = this.state;
+    const { superheroes, loading, error, filter, searchTerm  } = this.state;
+    
+    const filteredHeroes = superheroes.filter(hero => {
+        // Filter by alignment
+        if (filter !== 'all' && hero.biography.alignment.toLowerCase() !== filter) {
+            return false;
+        }
+    
+        // Filter by search term
+        if (searchTerm && !hero.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return false;
+        }
+    
+        return true;
+    });
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
       <div>
-        <h1>Superheroes</h1>
+        <h1 className="superHeroTitle">Superheroes</h1>
+
+        <input 
+    type="text" 
+    placeholder="Search for a superhero..." 
+    value={this.state.searchTerm} 
+    onChange={this.handleSearchChange}
+/>        <div className="filter-menu">
+          <label>Filter by Alignment: </label>
+          <select value={filter} onChange={this.handleFilterChange}>
+            <option value="all">See All</option>
+            <option value="good">Good</option>
+            <option value="bad">Bad</option>
+            <option value="neutral">Neutral</option>
+          </select>
+        </div>
+
         <ul className="hero-grid">
-          {superheroes.map((hero) => (
+          {filteredHeroes.map((hero) => (
             <li key={hero.id} className="hero-li">
               <div className="hero-name">{hero.name}</div>
               <img src={hero.images.md} alt={hero.name} />
@@ -56,6 +95,7 @@ class MainPage extends Component {
                 <div>Durability: {hero.powerstats.durability}</div>
                 <div>Power: {hero.powerstats.power}</div>
                 <div>Combat: {hero.powerstats.combat}</div>
+                <div>Occupation: {hero.work.occupation}</div>
               </div>
             </li>
           ))}
