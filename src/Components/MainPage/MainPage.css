@@ -7,20 +7,22 @@
     margin: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    background-color: #f7f7f7;
+    background-color: rgb(32, 32, 32);
     transition: background-color 0.3s ease;
     width: 150px; /* Adjust width as needed */
 }
 
 /* Hover effect for the list item */
 .hero-li:hover {
-    background-color: #e0e0e0;
+    background-color:rgb(45, 45, 45);
 }
 
 /* Styling for the superhero name */
 .hero-name {
     font-weight: bold;
     margin-bottom: 10px;
+    color: rgb(232, 233, 228);
+    
 }
 
 /* Styling for the superhero image */
@@ -36,9 +38,12 @@
 .hero-details {
     text-align: center;
     font-size: 0.9em; /* Adjust font size as needed */
+    color: rgb(232, 233, 228);
+    font-weight: 700;
 }
 .hero-details div {
     margin-bottom: 8px;  /* Adjust this value as needed */
+    
 }
 
 
@@ -47,6 +52,9 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px; /* Spacing between cards */
     padding: 20px; /* Optional: padding around the grid */
+    margin: 0 auto; /* This will center the grid if it has a set width */
+    width: 90%; /* Adjust this as needed */
+
 }
 
 .comparison-section {
@@ -59,6 +67,7 @@
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    
 }
 
 .selected-hero {
@@ -84,4 +93,66 @@
     margin-bottom: 10px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mainContainer{
+    background-color: rgb(27, 27, 27);
+    padding: 20px; /* Add some space around the content */
+
+}
+
+.superHeroTitle{
+    color: rgb(232, 233, 228);
+
+}
+
+.titleContainer{
+    place-items: center; /* Center both horizontally and vertically */
+    display: grid;
+
+}
+
+.filterLabel{
+    color: rgb(232, 233, 228);
+    font-weight: 600;
+padding-top: 20px;
+}
+.filter-menu{
+    display: grid;
+    place-items: center; 
+}
+html{
+    background-color: rgb(0, 0, 0);
+}
+.searchBar {
+    background-color: rgb(0, 0, 0);
+    color: rgb(232, 233, 228);
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9em;
+    border: none; /* Removes the default border */
+    border-radius: 25px; /* Gives the input rounded corners */
+    padding: 10px 20px; /* Adds some padding to the input */
+    width: 250px; /* Sets a default width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    outline: none; /* Removes the default browser outline */
+}
+
+.searchBar:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+}
+
+.searchBar:focus {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25); /* Even larger shadow when the input is focused */
+    transform: scale(1.02); /* Slightly enlarges the input when focused */
+}
+
+.searchBar::placeholder {
+    color: rgba(232, 233, 228); /* Slightly transparent placeholder for a more subtle appearance */
+    
+}
+.searchBarContainer {
+    display: grid;
+    place-items: center; /* Center both horizontally and vertically */
 }
