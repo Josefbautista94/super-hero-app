@@ -5,6 +5,7 @@ import axios from "axios";
 class MainPage extends Component {
   state = {
     superheroes: [],
+    selectedHeroes: [],
     loading: true,
     error: null,
     filter: "all",
@@ -39,9 +40,34 @@ class MainPage extends Component {
   handleSearchChange = (event) => {
     this.setState({ searchTerm: event.target.value });
   };
+  
+  handleFilterChange = (event) => {
+    this.setState({ filter: event.target.value });
+  };
+
+  handleSearchChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
+  selectHero(hero) {
+    let selectedHeroes = [...this.state.selectedHeroes];
+
+    const isAlreadySelected = selectedHeroes.some(h => h.id === hero.id);
+
+    if (isAlreadySelected) {
+        selectedHeroes = selectedHeroes.filter(h => h.id !== hero.id);
+    } else {
+        if (selectedHeroes.length < 2) {
+            selectedHeroes.push(hero);
+        }
+    }
+
+    this.setState({ selectedHeroes });
+  }
+
 
   render() {
-    const { superheroes, loading, error, filter, searchTerm } = this.state;
+    const { superheroes, loading, error, filter, searchTerm,selectedHeroes } = this.state;
 
     const filteredHeroes = superheroes.filter((hero) => {
       // Filter by alignment
@@ -62,6 +88,7 @@ class MainPage extends Component {
 
       return true;
     });
+    
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -84,9 +111,29 @@ class MainPage extends Component {
             <option value="neutral">Neutral</option>
           </select>
         </div>
+        
+        <div className="selected-heroes-section">
+        <div className="selected-heroes-container">
+
+          {selectedHeroes.map(hero => (
+            <div key={hero.id} className="selected-hero">
+              <h2>{hero.name}</h2>
+              <div>Power Stats: </div>
+              <img src={hero.images.md} alt={hero.name} />
+                <div>Intelligence: {hero.powerstats.intelligence}</div>
+                <div>Strength: {hero.powerstats.strength}</div>
+                <div>Speed: {hero.powerstats.speed}</div>
+                <div>Durability: {hero.powerstats.durability}</div>
+                <div>Power: {hero.powerstats.power}</div>
+                <div>Combat: {hero.powerstats.combat}</div>
+            </div>
+          ))}
+                      </div>
+
+        </div>
         <ul className="hero-grid">
           {filteredHeroes.map((hero) => (
-            <li key={hero.id} className="hero-li">
+            <li key={hero.id} className="hero-li" onClick={() => this.selectHero(hero)}>
               <div className="hero-name">{hero.name}</div>
               <img src={hero.images.md} alt={hero.name} />
               <div className="hero-details">
@@ -126,6 +173,7 @@ class MainPage extends Component {
                     ? hero.work.occupation
                     : "Not known"}
                 </div>
+                
               </div>
             </li>
           ))}
