@@ -49,3 +49,39 @@
     padding: 20px; /* Optional: padding around the grid */
 }
 
+.comparison-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-heroes-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.selected-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease;
+    width: 150px; /* Adjust width as needed */
+}
+
+.selected-hero:hover{
+    background-color: #e0e0e0;
+}
+
+.selected-hero img{
+    width: 100px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
