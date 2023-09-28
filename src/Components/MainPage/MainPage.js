@@ -10,7 +10,7 @@ class MainPage extends Component {
     error: null,
     filter: "all",
     searchTerm: "",
-    comparisonResult: ''
+    comparisonResult: "",
   };
 
   // 2. Fetch data in componentDidMount
@@ -88,17 +88,14 @@ class MainPage extends Component {
       hero2.powerstats.power * 2.5 +
       hero2.powerstats.combat * 1.3;
 
-  
     if (score1 > score2) {
-        this.setState({ comparisonResult: `${hero1.name} is stronger!` });
+      this.setState({ comparisonResult: `${hero1.name} is stronger!` });
     } else if (score1 < score2) {
-        this.setState({ comparisonResult: `${hero2.name} is stronger!` });
+      this.setState({ comparisonResult: `${hero2.name} is stronger!` });
     } else {
-        this.setState({ comparisonResult: `Both heroes are equally strong!` });
+      this.setState({ comparisonResult: `Both heroes are equally strong!` });
     }
   };
-
-  
 
   render() {
     const { superheroes, loading, error, filter, searchTerm, selectedHeroes } =
@@ -126,7 +123,6 @@ class MainPage extends Component {
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-    
 
     return (
       <div>
@@ -152,8 +148,8 @@ class MainPage extends Component {
             {selectedHeroes.map((hero) => (
               <div key={hero.id} className="selected-hero">
                 <h2>{hero.name}</h2>
-                <div>Power Stats: </div>
                 <img src={hero.images.md} alt={hero.name} />
+                <div>Power Stats: </div>
                 <div>Intelligence: {hero.powerstats.intelligence}</div>
                 <div>Strength: {hero.powerstats.strength}</div>
                 <div>Speed: {hero.powerstats.speed}</div>
@@ -186,7 +182,18 @@ class MainPage extends Component {
                     ? hero.biography.fullName
                     : hero.name}
                 </div>
+                <div> Aliases:</div>
+                <div> {hero.biography.aliases.join(', ')}</div>
+                <div>
+                  Place Of Birth:{" "}
+                  {hero.biography.placeOfBirth !== "-"
+                    ? hero.biography.placeOfBirth
+                    : "N/A"}
+                </div>
                 <div>Gender: {hero.appearance.gender}</div>
+                <div>Race: {hero.appearance.race}</div>
+                <div>Alignment: {hero.biography.alignment}</div>
+                <div> Base: {hero.work.base}</div>
                 <div>
                   Height: {hero.appearance.height[0]},{" "}
                   {hero.appearance.height[1]}
@@ -195,6 +202,9 @@ class MainPage extends Component {
                   Weight: {hero.appearance.weight[0]},{" "}
                   {hero.appearance.weight[1]}
                 </div>
+                <div>Eye Color: {hero.appearance.eyeColor}</div>
+                <div>Hair Color: {hero.appearance.hairColor}</div>
+
                 <div>Power Stats: </div>
                 <div>Intelligence: {hero.powerstats.intelligence}</div>
                 <div>Strength: {hero.powerstats.strength}</div>
@@ -202,20 +212,21 @@ class MainPage extends Component {
                 <div>Durability: {hero.powerstats.durability}</div>
                 <div>Power: {hero.powerstats.power}</div>
                 <div>Combat: {hero.powerstats.combat}</div>
-                <div>
-                  Place Of Birth:{" "}
-                  {hero.biography.placeOfBirth !== "-"
-                    ? hero.biography.placeOfBirth
-                    : "Not Known"}
-                </div>
-                <div>Race: {hero.appearance.race}</div>
-                <div>Alignment: {hero.biography.alignment}</div>
+
                 <div>
                   Occupation:{" "}
                   {hero.work.occupation !== "-"
                     ? hero.work.occupation
-                    : "Not known"}
+                    : "N/A"}
                 </div>
+                <div>Afffiliated Groups:</div>
+                <div>{hero.connections.groupAffiliation}</div>
+                <div>Relatives:</div>
+                <div>{hero.connections.relatives}</div>
+                <div>First Appearance: {hero.biography.firstAppearance}</div>
+
+                <div>Publisher: {hero.biography.publisher}</div>
+
               </div>
             </li>
           ))}
