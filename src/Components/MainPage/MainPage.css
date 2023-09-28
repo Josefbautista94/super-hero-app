@@ -1,0 +1,51 @@
+/* Styling for the list item containing superhero details */
+.hero-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease;
+    width: 150px; /* Adjust width as needed */
+}
+
+/* Hover effect for the list item */
+.hero-li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styling for the superhero name */
+.hero-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for the superhero image */
+.hero-li img {
+    width: 100px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the superhero details */
+.hero-details {
+    text-align: center;
+    font-size: 0.9em; /* Adjust font size as needed */
+}
+.hero-details div {
+    margin-bottom: 8px;  /* Adjust this value as needed */
+}
+
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px; /* Spacing between cards */
+    padding: 20px; /* Optional: padding around the grid */
+}
+
