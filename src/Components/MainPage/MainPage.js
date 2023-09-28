@@ -65,6 +65,9 @@ class MainPage extends Component {
     this.setState({ selectedHeroes });
   }
 
+  resetSelection = () => {
+    this.setState({ selectedHeroes: [] });
+}
 
   render() {
     const { superheroes, loading, error, filter, searchTerm,selectedHeroes } = this.state;
@@ -131,6 +134,9 @@ class MainPage extends Component {
                       </div>
 
         </div>
+        {this.state.selectedHeroes.length > 0 ? (
+    <button onClick={this.resetSelection}>Reset Selection</button>
+) : null}
         <ul className="hero-grid">
           {filteredHeroes.map((hero) => (
             <li key={hero.id} className="hero-li" onClick={() => this.selectHero(hero)}>
