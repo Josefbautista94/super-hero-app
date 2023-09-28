@@ -163,7 +163,7 @@ class MainPage extends Component {
         {this.state.selectedHeroes.length > 0 ? (
           <button onClick={this.resetSelection}>Reset Selection</button>
         ) : null}
-        {this.state.selectedHeroes.length > 0 ? (
+        {this.state.selectedHeroes.length > 1 ? (
           <button onClick={this.compareHeroes}>Compare</button>
         ) : null}
         <ul className="hero-grid">
