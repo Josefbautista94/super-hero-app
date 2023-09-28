@@ -85,9 +85,10 @@ class MainPage extends Component {
               <div className="hero-name">{hero.name}</div>
               <img src={hero.images.md} alt={hero.name} />
               <div className="hero-details">
-                <div>Gender: {hero.appearance.gender}</div>
-                <div>Race: {hero.appearance.race}</div>
-                <div>Alignment: {hero.biography.alignment}</div>
+              <div>Full Name: {hero.biography.fullName ? hero.biography.fullName : hero.name}</div>
+              <div>Gender: {hero.appearance.gender}</div>
+                <div>Height: {hero.appearance.height[0]}, {hero.appearance.height[1]}</div>          
+                <div>Weight: {hero.appearance.weight[0]}, {hero.appearance.weight[1]}</div>
                 <div>Power Stats: </div>
                 <div>Intelligence: {hero.powerstats.intelligence}</div>
                 <div>Strength: {hero.powerstats.strength}</div>
@@ -95,7 +96,11 @@ class MainPage extends Component {
                 <div>Durability: {hero.powerstats.durability}</div>
                 <div>Power: {hero.powerstats.power}</div>
                 <div>Combat: {hero.powerstats.combat}</div>
-                <div>Occupation: {hero.work.occupation}</div>
+                <div>Place Of Birth: {hero.biography.placeOfBirth !== '-' ? hero.biography.placeOfBirth : "Not Known"}</div>
+                <div>Race: {hero.appearance.race}</div>
+                <div>Alignment: {hero.biography.alignment}</div>
+                <div>Occupation: {hero.work.occupation !== '-' ? hero.work.occupation : 'Not known'}</div>
+               
               </div>
             </li>
           ))}
