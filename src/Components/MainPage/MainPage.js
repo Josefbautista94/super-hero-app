@@ -125,28 +125,12 @@ class MainPage extends Component {
     if (error) return <div>Error: {error}</div>;
 
     return (
-      <div className = "mainContainer">
-        <div className = "titleContainer">
-        <h1 className="superHeroTitle">Superheroes</h1>
+      <div className="mainContainer">
+        <div className="titleContainer">
+          <h1 className="superHeroTitle">Superheroes</h1>
         </div>
-        <div className ="searchBarContainer">
-        <input
-        className="searchBar"
-          type="text"
-          placeholder="Search for a superhero..."
-          value={this.state.searchTerm}
-          onChange={this.handleSearchChange}
-        /></div>
-        <div className="filter-menu">
-          <label className="filterLabel" >Filter by Alignment: </label>
-          <select value={filter} onChange={this.handleFilterChange}>
-            <option value="all">See All</option>
-            <option value="good">Good</option>
-            <option value="bad">Bad</option>
-            <option value="neutral">Neutral</option>
-          </select>
-        </div>
-        <div>{this.state.comparisonResult}</div>
+       
+        <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
         <div className="selected-heroes-section">
           <div className="selected-heroes-container">
             {selectedHeroes.map((hero) => (
@@ -164,12 +148,32 @@ class MainPage extends Component {
             ))}
           </div>
         </div>
+        <div className="button-div">
         {this.state.selectedHeroes.length > 0 ? (
-          <button onClick={this.resetSelection}>Reset Selection</button>
+          <button className = "buttons" onClick={this.resetSelection}>Reset Selection</button>
         ) : null}
         {this.state.selectedHeroes.length > 1 ? (
-          <button onClick={this.compareHeroes}>Compare</button>
+          <button className = "buttons" onClick={this.compareHeroes}>Compare</button>
         ) : null}
+</div>
+<div className="searchBarContainer">
+          <input
+            className="searchBar"
+            type="text"
+            placeholder="Search For A Superhero..."
+            value={this.state.searchTerm}
+            onChange={this.handleSearchChange}
+          />
+        </div>
+        <div className="filter-menu">
+          <label className="filterLabel">Filter by Alignment: </label>
+          <select className = "selectMenu" value={filter} onChange={this.handleFilterChange}>
+            <option value="all">See All</option>
+            <option value="good">Good</option>
+            <option value="bad">Bad</option>
+            <option value="neutral">Neutral</option>
+          </select>
+        </div>
         <ul className="hero-grid">
           {filteredHeroes.map((hero) => (
             <li
@@ -177,7 +181,7 @@ class MainPage extends Component {
               className="hero-li"
               onClick={() => this.selectHero(hero)}
             >
-              <div className="hero-name">{hero.name}fdf</div>
+              <div className="hero-name">{hero.name}</div>
               <img src={hero.images.md} alt={hero.name} />
               <div className="hero-details">
                 <div>
@@ -187,7 +191,7 @@ class MainPage extends Component {
                     : hero.name}
                 </div>
                 <div> Aliases:</div>
-                <div> {hero.biography.aliases.join(', ')}</div>
+                <div> {hero.biography.aliases.join(", ")}</div>
                 <div>
                   Place Of Birth:{" "}
                   {hero.biography.placeOfBirth !== "-"
@@ -219,9 +223,7 @@ class MainPage extends Component {
 
                 <div>
                   Occupation:{" "}
-                  {hero.work.occupation !== "-"
-                    ? hero.work.occupation
-                    : "N/A"}
+                  {hero.work.occupation !== "-" ? hero.work.occupation : "N/A"}
                 </div>
                 <div>Afffiliated Groups:</div>
                 <div>{hero.connections.groupAffiliation}</div>
@@ -230,7 +232,6 @@ class MainPage extends Component {
                 <div>First Appearance: {hero.biography.firstAppearance}</div>
 
                 <div>Publisher: {hero.biography.publisher}</div>
-
               </div>
             </li>
           ))}
