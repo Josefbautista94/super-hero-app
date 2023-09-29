@@ -95,10 +95,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.mainContainer{
+.mainContainer {
     background-color: rgb(27, 27, 27);
     padding: 20px; /* Add some space around the content */
-
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    width: 100vw; /* Ensure it covers the full viewport width */
+    box-sizing: border-box; /* This ensures that padding and border are included in the total width/height */
 }
 
 .superHeroTitle{
@@ -116,6 +118,7 @@
     color: rgb(232, 233, 228);
     font-weight: 600;
 padding-top: 20px;
+padding-bottom: 15px;
 }
 .filter-menu{
     display: grid;
@@ -152,7 +155,85 @@ html{
     color: rgba(232, 233, 228); /* Slightly transparent placeholder for a more subtle appearance */
     
 }
+.searchBar:focus::placeholder {
+    color: transparent;
+}
 .searchBarContainer {
     display: grid;
     place-items: center; /* Center both horizontally and vertically */
+}
+
+.comparisonResult{
+    color: rgb(232, 233, 228);
+    font-weight: 600;
+    display: grid;
+    place-items: center;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center; /* Horizontally center the buttons */
+    gap: 10px; /* Optional: Add some space between the buttons */
+    margin-bottom: 25px;
+}
+
+.buttons{
+    background-color: #000000; /* Dark background */
+    color: #FFF; /* White text */
+    border: none;
+    padding: 10px 20px; /* Adjust as needed */
+    font-size: 16px; /* Adjust as needed */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Hand cursor on hover */
+    transition: background-color 0.3s ease; 
+}
+
+.buttons:hover{
+    background-color: #555; /* Slightly lighter shade on hover */
+
+}
+
+.buttons:active{
+    background-color: #222; /* Darker shade when button is pressed */
+
+}
+
+.selectMenu {
+    background-color: #000000; /* Dark background */
+    color: #e0e0e0; /* Light gray text */
+    border: 2px solid #4a4a4a; /* Dark gray border */
+    padding: 10px 15px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    border-radius: 8px; /* Rounded corners */
+    appearance: none; /* Removes default appearance */
+    -webkit-appearance: none; /* Removes default appearance for Webkit browsers */
+    -moz-appearance: none; /* Removes default appearance for Firefox */
+    cursor: pointer; /* Hand cursor on hover */
+    transition: border-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.selectMenu:hover {
+    color: #ffffff; /* White text on hover */
+    border-color: #6a6a6a; /* Lighter gray border on hover */
+}
+
+.selectMenu:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #888888; /* Even lighter gray border on focus */
+}
+
+/* For the dropdown arrow in the select menu */
+.selectMenu::-ms-expand {
+    display: none; /* For IE/Edge */
+}
+
+/* Custom dropdown arrow using a pseudo-element */
+.selectMenu::after {
+    content: "\25BC"; /* Down arrow symbol */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Makes it non-clickable */
+    color: #e0e0e0; /* Light gray arrow */
 }
