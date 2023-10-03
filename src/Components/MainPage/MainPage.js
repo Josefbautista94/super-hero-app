@@ -132,9 +132,10 @@ class MainPage extends Component {
        
         <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
         <div className="selected-heroes-section">
-          <div className="selected-heroes-container">
-            {selectedHeroes.map((hero) => (
-              <div key={hero.id} className="selected-hero">
+        <div className="selected-heroes-container">
+    {selectedHeroes.map((hero, index) => (
+        <React.Fragment key={hero.id}>
+            <div className="selected-hero">
                 <h2>{hero.name}</h2>
                 <img src={hero.images.md} alt={hero.name} />
                 <div>Power Stats: </div>
@@ -144,9 +145,14 @@ class MainPage extends Component {
                 <div>Durability: {hero.powerstats.durability}</div>
                 <div>Power: {hero.powerstats.power}</div>
                 <div>Combat: {hero.powerstats.combat}</div>
-              </div>
-            ))}
-          </div>
+            </div>
+            {index === 0 && selectedHeroes.length > 1 && <div className="versus">
+            <img src="https://www.pngall.com/wp-content/uploads/5/Combat-Versus-PNG-Pic.png" className ="vsPng"alt="Versus png"/>
+
+            </div>}
+        </React.Fragment>
+    ))}
+</div>
         </div>
         <div className="button-div">
         {this.state.selectedHeroes.length > 0 ? (

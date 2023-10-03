@@ -70,6 +70,16 @@
     
 }
 
+.versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: white; /* or any color you prefer */
+    margin: 0 20px; /* adjust spacing as needed */
+}
+
 .selected-hero {
     display: flex;
     flex-direction: column;
@@ -236,4 +246,11 @@ html{
     transform: translateY(-50%);
     pointer-events: none; /* Makes it non-clickable */
     color: #e0e0e0; /* Light gray arrow */
+}
+
+.vsPng {
+    width: 150px; /* Adjust this value as needed */
+    height: auto; /* This will maintain the aspect ratio */
+    display: block;
+    margin: 0 auto; /* This will center the image horizontally */
 }
