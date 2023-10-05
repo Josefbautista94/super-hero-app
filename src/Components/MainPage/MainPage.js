@@ -63,9 +63,12 @@ class MainPage extends Component {
       }
     }
 
-    this.setState({ selectedHeroes });
-  }
-
+    this.setState({ 
+        selectedHeroes,
+        winner: null,  // Reset the winner
+        loser: null    // Reset the loser
+    });
+}
   resetSelection = () => {
     this.setState({ selectedHeroes: [] });
   };
