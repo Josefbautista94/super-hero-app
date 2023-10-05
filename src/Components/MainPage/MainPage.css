@@ -86,17 +86,17 @@
     align-items: center;
     padding: 15px;
     margin: 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #000000;
     border-radius: 8px;
-    background-color: #f7f7f7;
+    background-color: #4CAF50; /* Green background color */
     transition: background-color 0.3s ease;
     width: 150px; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
 }
 
-.selected-hero:hover{
-    background-color: #e0e0e0;
+.selected-hero:hover {
+    background-color: #45a049; /* Slightly darker green on hover for a dynamic effect */
 }
-
 .selected-hero img{
     width: 100px; /* Adjust width as needed */
     height: 150px; /* Adjust height as needed */
@@ -254,3 +254,4 @@ html{
     display: block;
     margin: 0 auto; /* This will center the image horizontally */
 }
+
