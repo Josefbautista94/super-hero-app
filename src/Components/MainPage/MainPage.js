@@ -72,30 +72,92 @@ class MainPage extends Component {
   compareHeroes = () => {
     const [hero1, hero2] = this.state.selectedHeroes;
 
+    const transformationMultiplier1 = this.getTransformationMultiplier(hero1.transformation);
+    const transformationMultiplier2 = this.getTransformationMultiplier(hero2.transformation);
+
+    const techniqueBonus1 = this.getTechniqueBonus(hero1.technique);
+    const techniqueBonus2 = this.getTechniqueBonus(hero2.technique);
+
+    const experienceBonus1 = this.getExperienceBonus(hero1.battlesFought);
+    const experienceBonus2 = this.getExperienceBonus(hero2.battlesFought);
+
     const score1 =
-      hero1.powerstats.intelligence * 1.5 +
-      hero1.powerstats.strength * 2 +
-      hero1.powerstats.speed * 1.2 +
-      hero1.powerstats.durability * 1.8 +
-      hero1.powerstats.power * 2.5 +
-      hero1.powerstats.combat * 1.3;
+      (hero1.powerstats.intelligence * 1.5 +
+       hero1.powerstats.strength * 2 +
+       hero1.powerstats.speed * 1.2 +
+       hero1.powerstats.durability * 1.8 +
+       hero1.powerstats.power * 2.5 +
+       hero1.powerstats.combat * 1.3 +
+       techniqueBonus1 +
+       experienceBonus1) * transformationMultiplier1;
 
     const score2 =
-      hero2.powerstats.intelligence * 1.5 +
-      hero2.powerstats.strength * 2 +
-      hero2.powerstats.speed * 1.2 +
-      hero2.powerstats.durability * 1.8 +
-      hero2.powerstats.power * 2.5 +
-      hero2.powerstats.combat * 1.3;
+      (hero2.powerstats.intelligence * 1.5 +
+       hero2.powerstats.strength * 2 +
+       hero2.powerstats.speed * 1.2 +
+       hero2.powerstats.durability * 1.8 +
+       hero2.powerstats.power * 2.5 +
+       hero2.powerstats.combat * 1.3 +
+       techniqueBonus2 +
+       experienceBonus2) * transformationMultiplier2;
 
-    if (score1 > score2) {
-      this.setState({ comparisonResult: `${hero1.name} is stronger!` });
-    } else if (score1 < score2) {
-      this.setState({ comparisonResult: `${hero2.name} is stronger!` });
-    } else {
-      this.setState({ comparisonResult: `Both heroes are equally strong!` });
+       if (score1 > score2) {
+        this.setState({ 
+          comparisonResult: `${hero1.name} is stronger!`,
+          winner: hero1.id,
+          loser: hero2.id
+        });
+      } else if (score1 < score2) {
+        this.setState({ 
+          comparisonResult: `${hero2.name} is stronger!`,
+          winner: hero2.id,
+          loser: hero1.id
+        });
+      } else {
+        this.setState({ 
+          comparisonResult: `Both heroes are equally strong!`,
+          winner: null,
+          loser: null
+        });
+      }
+  
+  };
+
+  // Helper functions for the improved compareHeroes
+  getTransformationMultiplier = (transformation) => {
+    switch (transformation) {
+      case 'Super Saiyan':
+        return 50;
+      case 'Super Saiyan 2':
+        return 100;
+      // ... other transformations
+      default:
+        return 1;
     }
   };
+
+  getTechniqueBonus = (technique) => {
+    switch (technique) {
+      case 'Kamehameha':
+        return 500;
+      case 'Final Flash':
+        return 600;
+      // ... other techniques
+      default:
+        return 0;
+    }
+  };
+
+  getExperienceBonus = (battlesFought) => {
+    if (battlesFought > 50) {
+      return 300;
+    } else if (battlesFought > 30) {
+      return 200;
+    } else {
+      return 100;
+    }
+  };
+
 
   render() {
     const { superheroes, loading, error, filter, searchTerm, selectedHeroes } =
@@ -135,7 +197,7 @@ class MainPage extends Component {
         <div className="selected-heroes-container">
     {selectedHeroes.map((hero, index) => (
         <React.Fragment key={hero.id}>
-            <div className="selected-hero">
+        <div className={`selected-hero ${hero.id === this.state.winner ? 'winner' : hero.id === this.state.loser ? 'loser' : ''}`}>
                 <h2>{hero.name}</h2>
                 <img src={hero.images.md} alt={hero.name} />
                 <div>Power Stats: </div>

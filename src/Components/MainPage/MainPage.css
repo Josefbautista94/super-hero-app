@@ -88,15 +88,13 @@
     margin: 15px;
     border: 1px solid #000000;
     border-radius: 8px;
-    background-color: #4CAF50; /* Green background color */
+    background-color: #00cde8; /* Green background color */
     transition: background-color 0.3s ease;
     width: 150px; /* Adjust width as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
 }
 
-.selected-hero:hover {
-    background-color: #45a049; /* Slightly darker green on hover for a dynamic effect */
-}
+
 .selected-hero img{
     width: 100px; /* Adjust width as needed */
     height: 150px; /* Adjust height as needed */
@@ -255,3 +253,10 @@ html{
     margin: 0 auto; /* This will center the image horizontally */
 }
 
+.winner {
+    background-color: #4CAF50; /* Green background color */
+}
+
+.loser {
+    background-color: #f44336; /* Red background color */
+}
