@@ -64,11 +64,12 @@
 
 .selected-heroes-container {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    
+    justify-content: center; /* Horizontally center the heroes */
+    align-items: center;     /* Vertically center the heroes */
+    gap: 20px;               /* Space between heroes */
+    flex-wrap: nowrap;       /* Prevent heroes from wrapping to the next line */
 }
+
 
 .versus {
     display: flex;
@@ -104,6 +105,8 @@
 }
 
 .mainContainer {
+    overflow-x: hidden; /* Hide any horizontal overflow */
+
     background-color: rgb(27, 27, 27);
     padding: 20px; /* Add some space around the content */
     min-height: 100vh; /* Ensure it covers the full viewport height */
@@ -325,3 +328,132 @@ p br {
 .pagination-controls {
     text-align: center;
 }
+
+/* Media Query for Tablets */
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .hero-li {
+        width: 100px;
+    }
+
+    .hero-li img {
+        width: 80px;
+        height: 120px;
+    }
+
+    .searchBar {
+        width: 200px;
+    }
+
+    .pagination-controls {
+        flex-direction: column; /* Stack the buttons vertically */
+    }
+
+    .previousButton, .nextButton {
+        margin: 5px;
+    }
+}
+
+/* Media Query for Mobile Phones */
+@media (max-width: 480px) {
+    .hero-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .hero-li {
+        width: 80px;
+    }
+
+    .hero-li img {
+        width: 60px;
+        height: 90px;
+    }
+
+    .searchBar {
+        width: 150px;
+    }
+
+    .pagination-controls {
+        flex-direction: column; /* Stack the buttons vertically */
+    }
+
+    .previousButton, .nextButton {
+        margin: 3px;
+    }
+}
+
+/* Base styles for all devices */
+
+/* ... Your existing styles ... */
+
+/* Media Query for Tablets *//* Base styles for all devices */
+
+/* ... Your existing styles ... */
+
+/* Media Query for Tablets */
+/* Media Query for Mobile Phones */
+@media (max-width: 480px) {
+    .selected-heroes-container {
+        flex-direction: row; /* Ensure heroes are displayed in a row */
+        gap: 10px;           /* Adjust space between heroes for mobile */
+    }
+
+    .versus {
+        margin: 0 5px; /* Adjust spacing around the "versus" section for mobile */
+    }
+
+    .selected-hero {
+        width: 100px; /* Adjust width for mobile view */
+    }
+
+    .selected-hero img {
+        width: 60px;  /* Adjust image width for mobile */
+        height: 90px; /* Adjust image height for mobile */
+    }
+}
+
+/* Media Query for Mobile Phones */
+@media (max-width: 480px) {
+    .selected-heroes-section {
+        gap: 10px; /* Adjust space between items for mobile */
+        padding: 0 10px; /* Add some horizontal padding to the section */
+
+    }
+
+    .selected-heroes-container {
+                justify-content: space-around; /* Distribute the space evenly around the items */
+
+        gap: 10px; /* Adjust space between heroes for mobile */
+    }
+
+    .versus {
+        margin: 0 1px; /* Adjust spacing around the "versus" section for mobile */
+    }
+
+    .selected-hero {
+        width: 45%; /* Reduce the width of each hero container */
+        margin: 5px; /* Adjust margin as needed */
+        padding: 10px; /* Reduce padding for mobile view */
+    }
+
+    .selected-hero img {
+        width: 60px; /* Adjust image width for mobile */
+        height: 90px; /* Adjust image height for mobile */
+    }
+}
+
+.selected-heroes-section {
+    
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;     /* Vertically center the content */
+    flex-wrap: wrap;         /* Allow items to wrap to the next line if there's not enough space */
+}
+
