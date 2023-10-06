@@ -226,7 +226,7 @@ class MainPage extends Component {
     return (
       <div className="mainContainer">
         <div className="titleContainer">
-          <h1 className="superHeroTitle">Superheroes</h1>
+          <h1 className="superHeroTitle"> Vs. Superheroes!</h1>
         </div>
         <div className="selected-heroes-section">
    
