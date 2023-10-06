@@ -115,11 +115,60 @@
     width: 100vw; /* Ensure it covers the full viewport width */
     box-sizing: border-box; /* This ensures that padding and border are included in the total width/height */
 }
-
-.superHeroTitle{
-    color: rgb(232, 233, 228);
-
+@keyframes heartbeat {
+    0% {
+        transform: skewX(-10deg) scale(1);
+    }
+    50% {
+        transform: skewX(-10deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(-10deg) scale(1);
+    }
 }
+
+@keyframes swing {
+    20% {
+        transform: skewX(10deg);
+    }
+    40% {
+        transform: skewX(-10deg);
+    }
+    60% {
+        transform: skewX(5deg);
+    }
+    80% {
+        transform: skewX(-5deg);
+    }
+    100% {
+        transform: skewX(0deg);
+    }
+}
+
+.superHeroTitle {
+    font-size: 2.5em;
+    color: #FFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #000, #FFF, #000);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    display: inline-block;
+    transform: skewX(-10deg);
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: heartbeat 1.5s infinite; /* Apply the heartbeat animation by default */
+}
+
+.superHeroTitle:hover {
+    background: linear-gradient(90deg, #FFF, #000, #FFF);
+    animation: swing 0.5s ease-in-out; /* Apply the swing animation on hover */
+    color: #000; /* Change text color to black on hover */
+}
+
+
 
 .titleContainer{
     place-items: center; /* Center both horizontally and vertically */
@@ -364,9 +413,9 @@ p br {
 /* Media Query for Mobile Phones */
 @media (max-width: 768px) {
     .hero-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adjust the minmax values as needed */
         gap: 10px;
-        padding: 10px;
+        padding: 0 10px; /* Some padding on the sides */
         width: 100%; /* Use the full width on mobile */
         margin: 0;
         padding-left: 5px;
@@ -376,7 +425,7 @@ p br {
     }
 
     .hero-li {
-        width: 80px;
+        width: 130px; /* Adjust width for smaller screens */
     }
 
     .hero-li img {
@@ -411,16 +460,20 @@ p br {
     .selected-heroes-container {
         flex-direction: row; /* Ensure heroes are displayed in a row */
         gap: 10px;           /* Adjust space between heroes for mobile */
+        align-items: center; /* Center heroes */
+        justify-content: space-around; /* Distribute heroes evenly */
+
+
     }
 
     .versus {
-        margin: 0 5px; /* Adjust spacing around the "versus" section for mobile */
-    }
+        margin: 0 10px; /* Adjust margin for the versus section */
+        font-size: 1.5em;    }
 
     .selected-hero {
-        width: 100px; /* Adjust width for mobile view */
+      width: 120px; /* Adjust width for smaller screens */
+        margin: 5px; /* Adjust margin */
     }
-
     .selected-hero img {
         width: 60px;  /* Adjust image width for mobile */
         height: 90px; /* Adjust image height for mobile */
