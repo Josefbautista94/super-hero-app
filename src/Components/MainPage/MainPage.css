@@ -290,3 +290,38 @@ p br {
     display: block; /* Convert the break to a block element */
     margin-bottom: 8px; /* Space between power statistics */
 }
+
+.previousButton, .nextButton {
+    background-color: #000000; /* Dark background */
+    color: #e0e0e0; /* Light gray text */
+    border: none; /* Remove default borders */
+    padding: 10px 20px; /* Add some padding for better appearance */
+    margin: 10px; /* Space between the buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    font-weight: 600;
+
+}
+
+.previousButton:hover, .nextButton:hover {
+    background-color: #333333; /* Slightly lighter background on hover */
+    transform: scale(1.05); /* Slightly scale the button size on hover */
+}
+
+.previousButton:disabled, .nextButton:disabled {
+    background-color: #666666; /* Grayed out background for disabled state */
+    cursor: not-allowed; /* Change cursor to not-allowed for disabled state */
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;     /* Vertically center the content */
+    height: 100%;            /* Take the full height of its parent */
+}
+
+.pagination-controls {
+    text-align: center;
+}
