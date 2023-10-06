@@ -53,7 +53,7 @@
     gap: 20px; /* Spacing between cards */
     padding: 20px; /* Optional: padding around the grid */
     margin: 0 auto; /* This will center the grid if it has a set width */
-    width: 90%; /* Adjust this as needed */
+    width: 80%; /* Adjust this as needed */
 
 }
 
@@ -106,7 +106,9 @@
 
 .mainContainer {
     overflow-x: hidden; /* Hide any horizontal overflow */
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: rgb(27, 27, 27);
     padding: 20px; /* Add some space around the content */
     min-height: 100vh; /* Ensure it covers the full viewport height */
@@ -360,11 +362,17 @@ p br {
 }
 
 /* Media Query for Mobile Phones */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .hero-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 10px;
         padding: 10px;
+        width: 100%; /* Use the full width on mobile */
+        margin: 0;
+        padding-left: 5px;
+        padding-right: 25px;
+        
+
     }
 
     .hero-li {
