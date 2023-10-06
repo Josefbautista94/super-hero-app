@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./MainPage.css";
+import ComparisonChart from '../ComparisonChart/ComparisonChart.js'; 
+
 import axios from "axios";
 
 class MainPage extends Component {
@@ -11,6 +13,7 @@ class MainPage extends Component {
     filter: "all",
     searchTerm: "",
     comparisonResult: "",
+    
   };
 
   // 2. Fetch data in componentDidMount
@@ -104,21 +107,42 @@ class MainPage extends Component {
        techniqueBonus2 +
        experienceBonus2) * transformationMultiplier2;
 
-       if (score1 > score2) {
+       const strongerPhrases = [
+        "dominates the battle!",
+        "emerges superior!",
+        "proves to be the mightier one!",
+        "stands tall in this comparison!",
+        "shows greater strength!"
+      ];
+      
+      const equallyStrongPhrases = [
+        "Both heroes are on par with each other!",
+        "It's a tie! Neither hero has the upper hand.",
+        "Both heroes showcase equal might!",
+        "Neither hero can outdo the other!",
+        "It's a balanced battle!"
+      ];
+      
+
+      const randomPhrase = (phrases) => {
+        return phrases[Math.floor(Math.random() * phrases.length)];
+      };
+      
+      if (score1 > score2) {
         this.setState({ 
-          comparisonResult: `${hero1.name} is stronger!`,
+          comparisonResult: `${hero1.name} ${randomPhrase(strongerPhrases)}`,
           winner: hero1.id,
           loser: hero2.id
         });
       } else if (score1 < score2) {
         this.setState({ 
-          comparisonResult: `${hero2.name} is stronger!`,
+          comparisonResult: `${hero2.name} ${randomPhrase(strongerPhrases)}`,
           winner: hero2.id,
           loser: hero1.id
         });
       } else {
         this.setState({ 
-          comparisonResult: `Both heroes are equally strong!`,
+          comparisonResult: randomPhrase(equallyStrongPhrases),
           winner: null,
           loser: null
         });
@@ -194,9 +218,10 @@ class MainPage extends Component {
         <div className="titleContainer">
           <h1 className="superHeroTitle">Superheroes</h1>
         </div>
-       
-        <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
         <div className="selected-heroes-section">
+   
+        <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
+
         <div className="selected-heroes-container">
     {selectedHeroes.map((hero, index) => (
         <React.Fragment key={hero.id}>
@@ -217,8 +242,27 @@ class MainPage extends Component {
             </div>}
         </React.Fragment>
     ))}
+    
 </div>
+
         </div>
+        {selectedHeroes.length === 2 && (
+        <p>
+            The comparison logic evaluates the strength of two heroes based on their power statistics. Each power statistic is assigned a weight, and the weighted sum of these statistics determines the overall score for each hero. The specific weights for each power statistic are as follows:
+            <br />
+            Intelligence: Multiplied by 1.5
+            <br />
+            Strength: Multiplied by 2
+            <br />
+            Speed: Multiplied by 1.2
+            <br />
+            Durability: Multiplied by 1.8
+            <br />
+            Power: Multiplied by 2.5
+            <br />
+            Combat: Multiplied by 1.3
+        </p>
+    )}
         <div className="button-div">
         {this.state.selectedHeroes.length > 0 ? (
           <button className = "buttons" onClick={this.resetSelection}>Reset Selection</button>

@@ -260,3 +260,33 @@ html{
 .loser {
     background-color: #f44336; /* Red background color */
 }
+
+/* Styling for the comparison logic description */
+/* Styling for the comparison logic description */
+p {
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 15px 20px; /* Padding around the text */
+    border-radius: 8px; /* Rounded corners */
+    color: #e0e0e0; /* Light gray text color */
+    font-size: 0.95em; /* Font size */
+    line-height: 1.5; /* Space between lines */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 20px; /* Space above the paragraph */
+    max-width: 600px; /* Maximum width of the paragraph */
+    margin-left: auto; /* Centering the paragraph */
+    margin-right: auto; /* Centering the paragraph */
+    text-align: center; /* Centering the text inside the paragraph */
+    font-weight: bold;  /* Making the text bolder */
+}
+
+/* Styling for the power statistics details */
+p br + br {
+    margin-top: 10px; /* Space above the first power statistic */
+    display: block; /* Convert the break to a block element */
+}
+
+p br {
+    content: ' '; /* Add space between power statistics */
+    display: block; /* Convert the break to a block element */
+    margin-bottom: 8px; /* Space between power statistics */
+}
