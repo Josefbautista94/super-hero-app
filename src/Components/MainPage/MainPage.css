@@ -1,15 +1,15 @@
-/* Styling for the list item containing superhero details */
 .hero-li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
-    margin: 15px;
+    padding: 20px;          /* Increased padding */
+    margin: 20px;           /* Increased margin */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     background-color: rgb(32, 32, 32);
     transition: background-color 0.3s ease;
-    width: 150px; /* Adjust width as needed */
+    width: 90%;             /* Increased width */
+    max-width: 350px;       /* Increased max-width */
 }
 
 /* Hover effect for the list item */
@@ -20,16 +20,16 @@
 /* Styling for the superhero name */
 .hero-name {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;    /* Increased margin-bottom */
     color: rgb(232, 233, 228);
-    
+    font-size: 1.1em;       /* Increased font size */
 }
 
 /* Styling for the superhero image */
 .hero-li img {
-    width: 100px; /* Adjust width as needed */
-    height: 150px; /* Adjust height as needed */
-    margin-bottom: 10px;
+    width: 120px;           /* Increased width */
+    height: 180px;          /* Increased height */
+    margin-bottom: 15px;    /* Increased margin-bottom */
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -37,25 +37,24 @@
 /* Styling for the superhero details */
 .hero-details {
     text-align: center;
-    font-size: 0.9em; /* Adjust font size as needed */
+    font-size: 1em;         /* Increased font size */
     color: rgb(232, 233, 228);
     font-weight: 700;
 }
 .hero-details div {
-    margin-bottom: 8px;  /* Adjust this value as needed */
-    
+    margin-bottom: 10px;    /* Increased margin-bottom */
 }
 
 
 .hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px; /* Spacing between cards */
-    padding: 20px; /* Optional: padding around the grid */
-    margin: 0 auto; /* This will center the grid if it has a set width */
-    width: 80%; /* Adjust this as needed */
-
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax values */
+    gap: 30px;              /* Increased gap */
+    padding: 30px;          /* Increased padding */
+    margin: 0 auto;
+    width: 90%;
 }
+
 
 .comparison-section {
     display: flex;
@@ -64,10 +63,10 @@
 
 .selected-heroes-container {
     display: flex;
-    justify-content: center; /* Horizontally center the heroes */
-    align-items: center;     /* Vertically center the heroes */
-    gap: 20px;               /* Space between heroes */
-    flex-wrap: nowrap;       /* Prevent heroes from wrapping to the next line */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;              /* Increased gap */
+    flex-wrap: nowrap;
 }
 
 
