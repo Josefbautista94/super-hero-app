@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./MainPage.css";
-import ComparisonChart from '../ComparisonChart/ComparisonChart.js'; 
 
 import axios from "axios";
 
@@ -13,6 +12,8 @@ class MainPage extends Component {
     filter: "all",
     searchTerm: "",
     comparisonResult: "",
+    currentPage: 1,
+    itemsPerPage: 20,
     
   };
 
@@ -187,8 +188,11 @@ class MainPage extends Component {
 
 
   render() {
-    const { superheroes, loading, error, filter, searchTerm, selectedHeroes } =
-      this.state;
+    const { superheroes, loading, error, filter, searchTerm, selectedHeroes, currentPage, itemsPerPage } =
+    this.state;
+
+
+      
 
     const filteredHeroes = superheroes.filter((hero) => {
       // Filter by alignment
@@ -210,8 +214,14 @@ class MainPage extends Component {
       return true;
     });
 
+    const indexOfLastHero = currentPage * itemsPerPage;
+    const indexOfFirstHero = indexOfLastHero - itemsPerPage;
+    const currentHeroes = filteredHeroes.slice(indexOfFirstHero, indexOfLastHero);
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
+     
+    
 
     return (
       <div className="mainContainer">
@@ -290,8 +300,7 @@ class MainPage extends Component {
           </select>
         </div>
         <ul className="hero-grid">
-          {filteredHeroes.map((hero) => (
-            <li
+        {currentHeroes.map((hero) => (            <li
               key={hero.id}
               className="hero-li"
               onClick={() => this.selectHero(hero)}
@@ -351,6 +360,20 @@ class MainPage extends Component {
             </li>
           ))}
         </ul>
+        <div className="pagination-controls">
+          <button className="previousButton"
+            onClick={() => this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <button className="nextButton"
+            onClick={() => this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }))}
+            disabled={currentPage === Math.ceil(filteredHeroes.length / itemsPerPage)}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }
