@@ -218,9 +218,10 @@ class MainPage extends Component {
         <div className="titleContainer">
           <h1 className="superHeroTitle">Superheroes</h1>
         </div>
-       
-        <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
         <div className="selected-heroes-section">
+   
+        <div className ="comparisonResult"><h1>{this.state.comparisonResult}</h1></div>
+
         <div className="selected-heroes-container">
     {selectedHeroes.map((hero, index) => (
         <React.Fragment key={hero.id}>
@@ -245,6 +246,23 @@ class MainPage extends Component {
 </div>
 
         </div>
+        {selectedHeroes.length === 2 && (
+        <p>
+            The comparison logic evaluates the strength of two heroes based on their power statistics. Each power statistic is assigned a weight, and the weighted sum of these statistics determines the overall score for each hero. The specific weights for each power statistic are as follows:
+            <br />
+            Intelligence: Multiplied by 1.5
+            <br />
+            Strength: Multiplied by 2
+            <br />
+            Speed: Multiplied by 1.2
+            <br />
+            Durability: Multiplied by 1.8
+            <br />
+            Power: Multiplied by 2.5
+            <br />
+            Combat: Multiplied by 1.3
+        </p>
+    )}
         <div className="button-div">
         {this.state.selectedHeroes.length > 0 ? (
           <button className = "buttons" onClick={this.resetSelection}>Reset Selection</button>
