@@ -48,7 +48,7 @@
 
 .hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax values */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted minmax values */
     gap: 30px;              /* Increased gap */
     padding: 30px;          /* Increased padding */
     margin: 0 auto;
