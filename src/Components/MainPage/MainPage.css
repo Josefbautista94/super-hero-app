@@ -48,13 +48,12 @@
 
 .hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax values */
-    gap: 30px;              /* Increased gap */
-    padding: 30px;          /* Increased padding */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 30px 30px 30px 10px; /* Reduced left padding */
     margin: 0 auto;
     width: 90%;
 }
-
 
 .comparison-section {
     display: flex;
@@ -109,7 +108,7 @@
     flex-direction: column;
     align-items: center;
     background-color: rgb(27, 27, 27);
-    padding: 20px; /* Add some space around the content */
+    padding: 10px; /* Add some space around the content */
     min-height: 100vh; /* Ensure it covers the full viewport height */
     width: 100vw; /* Ensure it covers the full viewport width */
     box-sizing: border-box; /* This ensures that padding and border are included in the total width/height */
